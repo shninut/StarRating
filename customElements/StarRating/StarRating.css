@@ -1,0 +1,90 @@
+.stars{
+    display: flex;
+    direction: rtl;
+    width: 125px;
+    height: 25px;
+    --background: #ffffff;
+}
+.star-box{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.star-hover{
+    height: 100%;
+    width: 50%;
+    position: absolute;
+    z-index: 1;
+}
+.star-hover::nth-child(1){
+    right: 0;
+}
+.star-hover:nth-child(2){
+    left: 0;
+}
+.star{
+    position: relative;
+    display: inline-block;
+    /* background-color: var(--background); */
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); 
+}
+.star div{
+    width: 50%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    background: var(--background);
+    box-shadow: -5px 0px 0 0 var(--background);
+}
+.star div:last-child{
+    left: 0;
+}
+.star div:first-child{
+    right: 0;
+}
+
+
+.star-box:has(.star-hover:nth-child(2):hover)
+.star div,
+
+.star-box:hover .star div:first-child,
+
+.stars:has(.star-box:not(:first-child):hover) 
+.star-box:first-child .star div,
+
+.stars:has(.star-box:not(:first-child, :nth-child(2)):hover) 
+.star-box:nth-child(2) .star div,
+
+.stars:has(.star-box:not(:first-child, :nth-child(2), :nth-child(3)):hover) 
+.star-box:nth-child(3) .star div,
+
+.stars:has(.star-box:last-child:hover) 
+.star-box:nth-child(4) .star div
+{
+    background-color: #a9a914!important;
+    box-shadow: -5px 0px 0 0 #a9a914!important;
+}
+
+
+
+.star-box:has(.star-hover:nth-child(1):hover)
+.star div:last-child,
+
+.stars:has(.star-box:not(:last-child):hover)
+.star-box:last-child .star div,
+
+.stars:has(.star-box:not(:last-child, :nth-child(4)):hover)
+.star-box:nth-child(4) .star div,
+
+.stars:has(.star-box:not(:last-child, :nth-child(4), :nth-child(3)):hover)
+.star-box:nth-child(3) .star div,
+
+.stars:has(.star-box:first-child:hover)
+.star-box:nth-child(2) .star div
+{
+    background-color: var(--background)!important;
+    box-shadow: -5px 0px 0 0 var(--background)!important;
+
+}
